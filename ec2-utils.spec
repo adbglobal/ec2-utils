@@ -39,7 +39,6 @@ Source12:  ec2ifscan
 Source13:  elastic-network-interfaces.conf
 Source14:  ec2ifscan.8
 
-Source20:  ixgbevf.conf
 Source21:  acpiphp.modules
 
 # fedora stuff
@@ -122,7 +121,6 @@ install -m644 %{SOURCE14} $RPM_BUILD_ROOT%{_mandir}/man8/ec2ifscan.8
 %endif
 
 # add module configs
-install -m644 -D %{SOURCE20} $RPM_BUILD_ROOT/etc/modprobe.d/ixgbevf.conf
 install -m755 -D %{SOURCE21} $RPM_BUILD_ROOT/etc/sysconfig/modules/acpiphp.modules
 
 %clean
@@ -144,7 +142,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with upstart}
 %{_sysconfdir}/udev/rules.d/75-persistent-net-generator.rules
 %endif
-%{_sysconfdir}/modprobe.d/ixgbevf.conf
 %{_sysconfdir}/sysconfig/modules/acpiphp.modules
 %{_sysconfdir}/sysconfig/network-scripts/ec2net-functions
 %{_sysconfdir}/sysconfig/network-scripts/ec2net.hotplug
